@@ -1,0 +1,9 @@
+{
+	"name": "AZURE-BWT-myDF",
+	"location": "southindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "5a919f04-fff7-4373-ae36-738684dade81",
+		"tenantId": "5afbf287-4f5c-48c7-ae51-4a4e78c4c447"
+	}
+}
