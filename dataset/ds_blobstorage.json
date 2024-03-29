@@ -1,0 +1,20 @@
+{
+	"name": "ds_blobstorage",
+	"properties": {
+		"description": "copying data from blob storage\n",
+		"linkedServiceName": {
+			"referenceName": "ls_blob_storage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "emp.txt",
+				"folderPath": "input",
+				"container": "addf-practice"
+			}
+		}
+	}
+}
