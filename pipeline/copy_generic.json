@@ -1,0 +1,68 @@
+{
+	"name": "copy_generic",
+	"properties": {
+		"description": "generic way of copy activity parameterized\n",
+		"activities": [
+			{
+				"name": "Copy data generic",
+				"description": "parameterized",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"modifiedDatetimeStart": "2024-03-28T00:00:00.000Z",
+							"modifiedDatetimeEnd": "2024-03-29T00:00:00.000Z",
+							"deleteFilesAfterCompletion": false
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "FlattenHierarchy"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_copydata_generic",
+						"type": "DatasetReference",
+						"parameters": {
+							"container_nm": "addf-practice",
+							"directory_nm": "input"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_storage_sinkgeneric",
+						"type": "DatasetReference",
+						"parameters": {
+							"container_nm": "addf-practice"
+						}
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Basic_Activity"
+		},
+		"annotations": []
+	}
+}
