@@ -1,0 +1,28 @@
+{
+	"name": "ds_input_copy_season",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_storageblob",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "empty.txt",
+				"folderPath": "input",
+				"container": "addf-practice"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": false,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"type": "String"
+			}
+		]
+	}
+}
