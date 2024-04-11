@@ -33,7 +33,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('Web1').output.MRData.SeasonTable.season",
+						"value": "@activity('Web1').output.MRData.SeasonTable.Seasons",
 						"type": "Expression"
 					},
 					"batchCount": 10
