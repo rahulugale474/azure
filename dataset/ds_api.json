@@ -1,0 +1,19 @@
+{
+	"name": "ds_api",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_api",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "Bronze/season",
+				"fileSystem": "project-formulaone"
+			}
+		},
+		"schema": {}
+	}
+}
