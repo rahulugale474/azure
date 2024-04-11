@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "HttpServerLocation",
-				"relativeUrl": "seasons"
+				"relativeUrl": "seasons?limit=100"
 			}
 		},
 		"schema": {}

@@ -5,12 +5,24 @@
 			"referenceName": "ls_api",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"fileName": {
+				"type": "String"
+			}
+		},
 		"annotations": [],
 		"type": "Json",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "Bronze/season",
+				"fileName": {
+					"value": "@dataset().fileName",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@concat('bronze/season/',string(utcNow('yyyyMMdd')))",
+					"type": "Expression"
+				},
 				"fileSystem": "project-formulaone"
 			}
 		},

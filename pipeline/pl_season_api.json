@@ -46,28 +46,19 @@
 				"outputs": [
 					{
 						"referenceName": "ds_api",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"fileName": "season.json"
+						}
 					}
 				]
-			},
-			{
-				"name": "ForEach1",
-				"type": "ForEach",
-				"dependsOn": [
-					{
-						"activity": "Copy data seasons from api",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"isSequential": false,
-					"batchCount": 30
-				}
 			}
 		],
+		"variables": {
+			"test": {
+				"type": "String"
+			}
+		},
 		"folder": {
 			"name": "Project_FormulaOne/ingest"
 		},
