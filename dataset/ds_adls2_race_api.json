@@ -1,0 +1,31 @@
+{
+	"name": "ds_adls2_race_api",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_api",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"filename": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().filename",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@concat('bronze/races/',string(utcNow('yyyyMMdd')))",
+					"type": "Expression"
+				},
+				"fileSystem": "project-formulaone"
+			}
+		},
+		"schema": {}
+	}
+}
