@@ -246,7 +246,7 @@
 					},
 					"activities": [
 						{
-							"name": "Execute Pipeline1",
+							"name": "Execute_pl_bring_race_result",
 							"type": "ExecutePipeline",
 							"dependsOn": [],
 							"policy": {
@@ -254,13 +254,31 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"waitOnCompletion": true
+								"pipeline": {
+									"referenceName": "pl_ingest_race_result",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"race_lst": {
+										"value": "@item().MRData.RaceTable.races",
+										"type": "Expression"
+									}
+								}
 							}
 						}
 					]
 				}
 			}
 		],
+		"variables": {
+			"season_id": {
+				"type": "String"
+			},
+			"round_id": {
+				"type": "String"
+			}
+		},
 		"folder": {
 			"name": "Project_FormulaOne/ingest"
 		},

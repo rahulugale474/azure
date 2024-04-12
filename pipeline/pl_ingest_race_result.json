@@ -1,0 +1,120 @@
+{
+	"name": "pl_ingest_race_result",
+	"properties": {
+		"activities": [
+			{
+				"name": "ForEach_race_data",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"activities": [
+						{
+							"name": "set_var_season_id",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "season_id",
+								"value": {
+									"value": "@item().season",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "set_var_round_id",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "round_id",
+								"value": {
+									"value": "@item().round\n",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "actcopy_data_session_api_to_adls",
+							"description": "This activity will copy data from Api to ADLS",
+							"type": "Copy",
+							"dependsOn": [
+								{
+									"activity": "set_var_season_id",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								},
+								{
+									"activity": "set_var_round_id",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "JsonSource",
+									"storeSettings": {
+										"type": "HttpReadSettings",
+										"requestMethod": "GET"
+									},
+									"formatSettings": {
+										"type": "JsonReadSettings"
+									}
+								},
+								"enableStaging": false
+							},
+							"inputs": [
+								{
+									"referenceName": "ds_http_api",
+									"type": "DatasetReference",
+									"parameters": {
+										"relative_url": {
+											"value": "@concat(variables('season_id'),'/',variables('round_id'),'/results.json?limit=100')",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"race_lst": {
+				"type": "Array"
+			}
+		},
+		"variables": {
+			"season_id": {
+				"type": "String"
+			},
+			"round_id": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "Project_FormulaOne/ingest"
+		},
+		"annotations": []
+	}
+}
