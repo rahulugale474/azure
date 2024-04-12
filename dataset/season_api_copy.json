@@ -5,12 +5,20 @@
 			"referenceName": "eargestapi",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"relative_url": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "Json",
 		"typeProperties": {
 			"location": {
 				"type": "HttpServerLocation",
-				"relativeUrl": "seasons?limit=100"
+				"relativeUrl": {
+					"value": "@dataset().relative_url",
+					"type": "Expression"
+				}
 			}
 		},
 		"schema": {}
