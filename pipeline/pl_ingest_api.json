@@ -209,7 +209,10 @@
 						"storeSettings": {
 							"type": "AzureBlobFSReadSettings",
 							"recursive": true,
-							"wildcardFolderPath": "@concat('bronze/races/',string(utcNow('yyyyMMdd')))",
+							"wildcardFolderPath": {
+								"value": "@concat('bronze/races/',string(utcNow('yyyyMMdd')))",
+								"type": "Expression"
+							},
 							"wildcardFileName": "*.json",
 							"enablePartitionDiscovery": false
 						},
@@ -244,6 +247,7 @@
 						"value": "@activity('lookup_races_data').output.value",
 						"type": "Expression"
 					},
+					"isSequential": true,
 					"activities": [
 						{
 							"name": "Execute_pl_bring_race_result",
