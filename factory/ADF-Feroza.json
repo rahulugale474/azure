@@ -1,0 +1,9 @@
+{
+	"name": "ADF-Feroza",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "27dbec2a-738c-4065-b9d0-e19c6062a885",
+		"tenantId": "b98c87ef-db81-4520-bf55-c4e70ece2a7d"
+	}
+}
