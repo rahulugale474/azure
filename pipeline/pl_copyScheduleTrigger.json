@@ -5,7 +5,7 @@
 		"activities": [
 			{
 				"name": "Copy data1",
-				"description": "copy data using trigger",
+				"description": "copy data using schedule trigger",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
