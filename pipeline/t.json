@@ -30,7 +30,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "ds_csv",
+						"referenceName": "zip_copyfile",
 						"type": "DatasetReference"
 					}
 				]
